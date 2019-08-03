@@ -1,0 +1,51 @@
+{{include file="public/header" /}}
+
+<!-- header top nav -->
+{{include file="public/header_top_nav" /}}
+
+<!-- search -->
+{{include file="public/nav_search" /}}
+
+<!-- header nav -->
+{{include file="public/header_nav" /}}
+
+<!-- goods category -->
+{{include file="public/goods_category" /}}
+
+<!-- content -->
+<div class="am-container user-main">
+
+    <!-- user menu start -->
+    {{include file="public/user_menu" /}}
+    <!-- user menu end -->
+
+    <!-- content start -->
+    <div class="user-content">
+        <div class="user-content-body">
+            <!-- 列表 -->
+            <div class="data-list">
+                <form class="am-form form-validation form-search" method="post" action="{{:MyUrl('index/userbd/StartBd')}}" request-type="form">
+                    <table class="am-table am-table-striped">
+
+                        <tbody>
+                            <select name="goods_price" class="chosen-select" data-placeholder="报单金额...">
+                                {{if !empty($data_list)}}
+                                {{foreach $data_list as $v}}
+                                <option value="{{$v.goods_price}}">{{$v.goods_name}}</option>
+                                {{/foreach}}
+                                {{/if}}
+                            </select>
+                        </tbody>
+                    </table>
+
+                    <button class="am-btn am-btn-default am-radius" type="submit">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->
