@@ -19,6 +19,27 @@ use think\Db;
 class UserAmountService
 {
     /**
+     * @param $user_id  [用户id]
+     * @return array|\PDOStatement|string|\think\Model|null
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public static function UserInfo($user_id){
+        $user=Db::name('UserAmount')->where(['userid' => $user_id])->find();
+        return $user;
+    }
+
+    /**
+     * @param $user_id          [用户id]
+     * @param string $column    [要查询的字段]
+     * @return mixed
+     */
+    public static function UserIntegal($user_id,$column=''){
+        $col=Db::name('UserAmount')->where(['userid' => $user_id])->value($column);
+        return $col;
+    }
+    /**
      * @param $user_id
      * @param $amount
      * @param $orderno
@@ -31,11 +52,11 @@ class UserAmountService
      */
     public static function  UserBdAmountAdd($user_id,$amount,$orderno,$flowtype=11)
     {
-        $user=Db::name('UserAmount')->where(['userid' => $user_id])->find();
+        $user=self::UserInfo($user_id);
         if($user){
             // 开启事务
             Db::startTrans();
-            $bd_amount=Db::name('UserAmount')->where(['userid' => $user_id])->value('bdamount');
+            $bd_amount=self::UserIntegal($user_id,'bdamount');
             $data = array(
                 'userid'           => intval($user_id),
                 'flowid'            =>'BD' . $orderno. rand(100000, 9999999),
@@ -65,22 +86,23 @@ class UserAmountService
     }
 
     /**
-     * @param $user_id          [用户id]
-     * @param $amount           [金额]
-     * @param $orderno          [订单号]
-     * @param int $flowtype     [流水类型]
-     * @return bool
+     * @param $user_id
+     * @param $amount
+     * @param $orderno
+     * @param int $flowtype
+     * @return array|bool
+     * @throws \think\Exception
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
     public static function UserBdAmountRec($user_id,$amount,$orderno,$flowtype=12)
     {
-        $user=Db::name('UserAmount')->where(['userid' => $user_id])->find();
+        $user=self::UserInfo($user_id);
         if($user){
             // 开启事务
             Db::startTrans();
-            $bd_amount=Db::name('UserAmount')->where(['userid' => $user_id])->value('bdamount');
+            $bd_amount=self::UserIntegal($user_id,'bdamount');
             if($bd_amount<$amount){
                 return DataReturn('报单币余额不足', 0);
             }
