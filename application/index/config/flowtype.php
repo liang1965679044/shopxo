@@ -8,13 +8,13 @@
 return [
     '11'=>[
         "flowtype"=>"11",
-        "flowcate"=>"充值",
+        "flowcate"=>"报单币",
         "flowkey" =>"增加",
         "flowname"=>"用户充值",
     ],
     '12'=>[
         "flowtype"=>"12",
-        "flowcate"=>"报单",
+        "flowcate"=>"报单币",
         "flowkey" =>"减少",
         "flowname"=>"用户报单",
     ],
