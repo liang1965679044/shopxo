@@ -20,9 +20,9 @@ return [
     // 数据库名
     'database'        => 'shopxo.com',
     // 用户名
-    'username'        => 'shopxo',
+    'username'        => 'root',
     // 密码
-    'password'        => 'shopxo',
+    'password'        => '123456',
     // 端口
     'hostport'        => '3306',
     // 连接dsn
