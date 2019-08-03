@@ -743,13 +743,21 @@ class NavigationService
                 'is_system' =>  1,
                 'item'      =>  [
                     [
+                        'name'      =>  '我的资产',
+                        'url'       =>  MyUrl('index/userassets/index'),
+                        'contains'  =>  ['userassetsindex'],
+                        'is_show'   =>  1,
+                        'icon'      =>  'am-icon-fire',
+                        'is_system' =>  1,
+                    ],
+                    [
                         'name'      =>  '我的积分',
                         'url'       =>  MyUrl('index/userintegral/index'),
                         'contains'  =>  ['userintegralindex'],
                         'is_show'   =>  1,
                         'icon'      =>  'am-icon-fire',
                         'is_system' =>  1,
-                    ],
+                    ]
                 ]
             ],
             'base' => [
