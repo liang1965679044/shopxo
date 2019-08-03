@@ -144,7 +144,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function  UserGqAmountAdd($user_id,$amount,$orderno,$flowtype=11)
+    public static function  UserGqAmountAdd($user_id,$amount,$orderno,$flowtype=13)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -189,7 +189,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function UserGqAmountRec($user_id,$amount,$orderno,$flowtype=12)
+    public static function UserGqAmountRec($user_id,$amount,$orderno,$flowtype=14)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -237,7 +237,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function  UserJfAmountAdd($user_id,$amount,$orderno,$flowtype=11)
+    public static function  UserJfAmountAdd($user_id,$amount,$orderno,$flowtype=15)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -282,7 +282,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function UserJfAmountRec($user_id,$amount,$orderno,$flowtype=12)
+    public static function UserJfAmountRec($user_id,$amount,$orderno,$flowtype=16)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -330,7 +330,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function  UserJfbAmountAdd($user_id,$amount,$orderno,$flowtype=11)
+    public static function  UserJfbAmountAdd($user_id,$amount,$orderno,$flowtype=17)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -375,7 +375,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function UserJfbAmountRec($user_id,$amount,$orderno,$flowtype=12)
+    public static function UserJfbAmountRec($user_id,$amount,$orderno,$flowtype=18)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -423,7 +423,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function  UserJjAmountAdd($user_id,$amount,$orderno,$flowtype=11)
+    public static function  UserJjAmountAdd($user_id,$amount,$orderno,$flowtype=19)
     {
         $user=self::UserInfo($user_id);
         if($user){
@@ -468,7 +468,7 @@ class UserAmountService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function UserJjAmountRec($user_id,$amount,$orderno,$flowtype=12)
+    public static function UserJjAmountRec($user_id,$amount,$orderno,$flowtype=20)
     {
         $user=self::UserInfo($user_id);
         if($user){
