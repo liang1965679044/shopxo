@@ -39,7 +39,9 @@ class Answer extends Common
 		// 权限校验
 		$this->IsPower();
 	}
-
+    function chenwu(){
+        return 1;
+    }
 	/**
      * 问答列表
      * @author   Devil
