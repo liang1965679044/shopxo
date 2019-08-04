@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c339d366-caaf-437c-8ed8-8a25d8516bc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/controller/Userbd.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Userbd.php" afterDir="false" />
-    </list>
+    <list default="true" id="c339d366-caaf-437c-8ed8-8a25d8516bc3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,28 +14,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/controller/Useraddress.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="118" column="36" selection-start-line="118" selection-start-column="36" selection-end-line="118" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/default/user/reg_info.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3504">
-              <caret line="146" column="53" selection-start-line="138" selection-start-column="43" selection-end-line="146" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/index/controller/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6720">
+            <state relative-caret-position="384">
               <caret line="294" column="29" selection-start-line="294" selection-start-column="29" selection-end-line="294" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/Userbd.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+              <folding>
+                <element signature="e#593#619#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/service/UserService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="1531" column="26" lean-forward="true" selection-start-line="1531" selection-start-column="26" selection-end-line="1531" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -46,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/service/IntegralService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5184">
-              <caret line="226" column="41" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="41" />
+            <state relative-caret-position="3209">
+              <caret line="212" column="101" selection-start-line="212" selection-start-column="33" selection-end-line="212" selection-end-column="101" />
               <folding>
                 <element signature="e#584#597#0#PHP" expanded="true" />
               </folding>
@@ -55,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/service/UserAmountService.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1128">
-              <caret line="52" column="43" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="43" />
+            <state relative-caret-position="125">
+              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
               <folding>
                 <element signature="e#2957#4371#0#PHP" />
               </folding>
@@ -67,14 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Desktop/代码/UserAmountCoin.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/index/controller/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="29" column="41" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="41" />
-              <folding>
-                <element signature="e#36#66#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="144">
+              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -102,6 +99,7 @@
       <find>accounts</find>
       <find>reg</find>
       <find>IsExistAccounts</find>
+      <find>update</find>
     </findStrings>
     <dirStrings>
       <dir>D:\phpstudy\phpstudy_pro\WWW\shopxo\application</dir>
@@ -133,7 +131,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="65" />
     <option name="y" value="55" />
     <option name="width" value="1750" />
@@ -160,14 +158,7 @@
               <item name="shopxo" type="b2602c69:ProjectViewProjectNode" />
               <item name="shopxo" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="index" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shopxo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shopxo" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="index" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -217,12 +208,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31215000" />
+    <option name="totallyTimeSpent" value="31221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16621985" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16823056" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -439,8 +431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="214" column="21" lean-forward="true" selection-start-line="214" selection-start-column="21" selection-end-line="214" selection-end-column="21" />
+        <state relative-caret-position="144">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -517,8 +509,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/service/UserService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13761">
-          <caret line="1665" column="53" selection-start-line="1665" selection-start-column="34" selection-end-line="1665" selection-end-column="53" />
+        <state relative-caret-position="91">
+          <caret line="1531" column="26" lean-forward="true" selection-start-line="1531" selection-start-column="26" selection-end-line="1531" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -531,8 +523,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Userbd.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+        <state relative-caret-position="168">
+          <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
           <folding>
             <element signature="e#593#619#0#PHP" expanded="true" />
           </folding>
@@ -555,27 +547,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6720">
+        <state relative-caret-position="384">
           <caret line="294" column="29" selection-start-line="294" selection-start-column="29" selection-end-line="294" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/service/IntegralService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5184">
-          <caret line="226" column="41" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="41" />
+        <state relative-caret-position="3209">
+          <caret line="212" column="101" selection-start-line="212" selection-start-column="33" selection-end-line="212" selection-end-column="101" />
           <folding>
             <element signature="e#584#597#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/service/UserAmountService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1128">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="e#2957#4371#0#PHP" />
           </folding>
         </state>
       </provider>
@@ -586,6 +568,16 @@
           <caret line="29" column="41" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="41" />
           <folding>
             <element signature="e#36#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/service/UserAmountService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding>
+            <element signature="e#2957#4371#0#PHP" />
           </folding>
         </state>
       </provider>
