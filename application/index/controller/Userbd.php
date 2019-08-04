@@ -58,7 +58,7 @@ class UserBd extends Common
      */
     public function StartBd()
     {
-        $res=UserAmountService::UserBdAmountRec(1,1000,9999);
+        $res=UserAmountService::UserBdAmountAdd(1,1000,9999);
         dump($res);
        /* if(input())
         {
