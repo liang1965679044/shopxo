@@ -291,7 +291,6 @@ class User extends Common
         {
             return $this->error('非法访问');
         }
-
         // 调用服务层
         return UserService::Reg(input('post.'));
     }

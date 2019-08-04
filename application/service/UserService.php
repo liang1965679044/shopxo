@@ -1007,6 +1007,7 @@ class UserService
      */
     public static function Reg($params = [])
     {
+
         // 数据验证
         $p = [
             [
@@ -1037,7 +1038,6 @@ class UserService
         {
             return DataReturn($ret, -1);
         }
-
         // 是否开启用户注册
         if(!in_array($params['type'], MyC('home_user_reg_state')))
         {
@@ -1072,7 +1072,7 @@ class UserService
             }
         }
 
-        // 验证码校验
+        /*// 验证码校验
         if(isset($obj) && is_object($obj))
         {
             // 是否已过期
@@ -1085,7 +1085,7 @@ class UserService
             {
                 return DataReturn('验证码错误', -11);
             }
-        }
+        }*/
 
         // 是否需要审核
         $common_register_is_enable_audit = MyC('common_register_is_enable_audit', 0);
@@ -1101,7 +1101,15 @@ class UserService
         ];
         if($params['type'] == 'sms')
         {
-            $data['mobile'] = $params['accounts'];
+            //根据上级手机号查找上级是否存在
+            $hign_user=self::IsExistAccounts($params['accounts_higher_level'], 'mobile');
+            if(!$hign_user)
+            {
+                return DataReturn('上级手机号码不存在', -3);
+            }
+            $data['mobile']     = $params['accounts'];
+            $data['nickname']   = $params['nickname'];
+            $data['parent_id']  =$hign_user;
         } else if($params['type'] == 'email') {
             $data['email'] = $params['accounts'];
         } else {
