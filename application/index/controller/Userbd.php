@@ -13,6 +13,8 @@ namespace app\index\controller;
 use app\service\BdService;
 use app\service\UserAmountService;
 
+use app\service\UserLevelService;
+
 /**
  * 用户报单
  * @author   Devil
@@ -58,7 +60,7 @@ class UserBd extends Common
      */
     public function StartBd()
     {
-        $res=UserAmountService::UserBdAmountAdd(1,1000,9999);
+        $res=UserLevelService::UserLevelUp(1);
         dump($res);
        /* if(input())
         {

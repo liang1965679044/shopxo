@@ -39,6 +39,10 @@ class UserAmountService
         $col=Db::name('UserAmount')->where(['userid' => $user_id])->value($column);
         return $col;
     }
+    public static function UserAmount($user_id){
+        $money=Db::name('BdOrder')->where(['user_id' => $user_id])->sum('price');
+        return $money;
+    }
     /**
      * @param $user_id
      * @param $amount

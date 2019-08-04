@@ -1007,7 +1007,6 @@ class UserService
      */
     public static function Reg($params = [])
     {
-
         // 数据验证
         $p = [
             [
@@ -1102,14 +1101,18 @@ class UserService
         if($params['type'] == 'sms')
         {
             //根据上级手机号查找上级是否存在
-            $hign_user=self::IsExistAccounts($params['accounts_higher_level'], 'mobile');
-            if(!$hign_user)
+            $high_user=self::IsExistAccounts($params['accounts_higher_level'], 'mobile');
+            if(!$high_user)
             {
                 return DataReturn('上级手机号码不存在', -3);
             }
+            //找到所属上级的userparents
+            $userparents=self::IsUserparents($high_user);
+
             $data['mobile']     = $params['accounts'];
             $data['nickname']   = $params['nickname'];
-            $data['parent_id']  =$hign_user;
+            $data['parent_id']  =$high_user;
+            $data['userparents']=$userparents;
         } else if($params['type'] == 'email') {
             $data['email'] = $params['accounts'];
         } else {
@@ -1144,6 +1147,20 @@ class UserService
         return DataReturn('注册失败', -100);
     }
 
+    /**找到上级的  $userparents
+     * @param $id  [上级用户id]
+     * @return mixed|string
+     */
+    public static function IsUserparents($id)
+    {
+        $userparents=Db::name('User')->where(['id'=>$id])->value('userparents');
+        if($userparents!=''){
+            $userparents=$userparents.$id.'%';
+        }else{
+            $userparents = '%'.$id."%";
+        }
+        return $userparents;
+    }
     /**
      * 用户注册账户校验
      * @author   Devil
