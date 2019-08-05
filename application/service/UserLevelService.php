@@ -37,6 +37,9 @@ class UserLevelService
 
     /**
      * @param $userid
+     * @return bool
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public static function UserLevelUp($userid)
     {
@@ -93,5 +96,28 @@ class UserLevelService
             ];
             Db::name('User')->where(['id'=>$id])->update($data);
         }
+    }
+    public static function UserScore($userid)
+    {
+        $jf= Db::name('UserAmount')->where(['userid'=>$userid])->value('jfamount');
+        return $jf;
+    }
+    public static function Userexchange($score,$userid)
+    {
+        if(!is_numeric($score)){
+            return DataReturn('输入积分有误');
+        }
+
+        if (!is_int($score + 0) || ($score + 0) < 0) {
+            return DataReturn('输入积分只能是正整数');
+        }
+        $jf=self::UserScore($userid);
+        if(empty($jf) || $score>$jf){
+            return DataReturn('积分不足，兑换失败');
+        }
+        UserAmountService::UserJfAmountRec($userid,$score,'88888');
+        UserAmountService::UserJjAmountAdd($userid,$score*0.7,'33242');
+        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,'882342342888');
+        return DataReturn('兑换成功', 0);
     }
 }

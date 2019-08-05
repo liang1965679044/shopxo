@@ -60,7 +60,8 @@ class UserBd extends Common
      */
     public function StartBd()
     {
-        $res=UserLevelService::UserLevelUp(1);
+
+        $res=UserLevelService::Userexchange(99,$this->user['id']);
         dump($res);
        /* if(input())
         {
