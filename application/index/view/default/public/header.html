@@ -32,6 +32,7 @@
 		<link rel="stylesheet" type="text/css" href="{{$Think.__MY_ROOT_PUBLIC__}}static/{{$module_css}}?v={{:MyC('home_static_cache_version')}}" />
 	{{/if}}
 
+
 	<!-- css钩子 -->
     {{if !empty($plugins_css_data) and is_array($plugins_css_data)}}
         {{foreach $plugins_css_data as $hook}}

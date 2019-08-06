@@ -249,7 +249,7 @@ class UserAmountService
             Db::startTrans();
             $jf_amount=self::UserIntegal($user_id,'jfamount');
             $data = array(
-                'userid'           => intval($user_id),
+                'userid'            => intval($user_id),
                 'flowid'            =>'GF' . $orderno. rand(100000, 9999999),
                 'usertype'          =>1,
                 'userid'            =>$user_id,

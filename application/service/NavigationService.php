@@ -765,6 +765,14 @@ class NavigationService
                         'is_show'   =>  1,
                         'icon'      =>  'am-icon-fire',
                         'is_system' =>  1,
+                    ],
+                    [
+                        'name'      =>  '抽奖中心',
+                        'url'       =>  MyUrl('index/userdraw/index'),
+                        'contains'  =>  ['userdrawindex'],
+                        'is_show'   =>  1,
+                        'icon'      =>  'am-icon-fire',
+                        'is_system' =>  1,
                     ]
                 ]
             ],
