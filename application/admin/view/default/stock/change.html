@@ -1,0 +1,42 @@
+{{include file="public/header" /}}
+
+<!-- right content start  -->
+<div class="content-right">
+    <div class="content">
+        <!-- form start -->
+        <form class="am-form form-validation view-save" action="{{:MyUrl('admin/stock/assign_gq')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('admin/stock/change')}}">
+
+            <div class="am-form-group">
+                <label>用户</label>
+                <select name="userid" class="am-radius chosen-select c-p" data-validation-message="请选择用户" required>
+                    {{foreach $data as $v}}
+                    <option value="{{$v.id}}">{{$v.username}}</option>
+                    {{/foreach}}
+                </select>
+            </div>
+            <div class="am-form-group">
+                <label>原始股</label>
+                <select name="id" class="am-radius chosen-select c-p" data-validation-message="请选择原始股" required>
+                    {{foreach $list as $v1}}
+                    <option value="{{$v1.id}}">{{$v1.zname}}&nbsp剩余数量:{{$v1.value}}</option>
+                    {{/foreach}}
+                </select>
+            </div>
+            <div class="am-form-group">
+                <label><span class="am-form-group-label-tips">要分配的原始股数量</span></label>
+                <input type="text" name="value" placeholder="原始股数量" data-validation-message="只能为正整数" class="am-radius"  />
+            </div>
+
+
+            <div class="am-form-group am-form-group-refreshing">
+                <button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'处理中...'}">分配</button>
+            </div>
+        </form>
+        <!-- form end -->
+    </div>
+</div>
+<!-- right content end  -->
+        
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->

@@ -1,0 +1,61 @@
+{{include file="public/header" /}}
+
+<!-- right content start  -->
+<div class="content-right">
+	<div class="content">
+		<!-- form start -->
+
+		<!-- form end -->
+
+		<!-- operation start -->
+		<div class="am-g m-t-15">
+			<a href="{{:MyUrl('admin/draw/saveinfo')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-icon-plus"> 新增</a>
+		</div>
+		<!-- operation end -->
+
+		<!-- list start -->
+		<table class="am-table am-table-striped am-table-hover am-text-middle m-t-10">
+			<thead>
+			<tr>
+				<th class="am-hide-md-down">id</th>
+				<th class="am-hide-sm-only">奖品名称</th>
+				<th class="am-hide-sm-only">奖品排序</th>
+				<th class="am-hide-sm-only">奖品概率</th>
+				<th class="am-hide-sm-only">奖品积分</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{if !empty($data_list)}}
+			{{foreach $data_list as $v}}
+			<td class="am-hide-sm-only">{{$v.id}}</td>
+			<td class="am-hide-sm-only">{{$v.name}}</td>
+			<td class="am-hide-sm-only">{{$v.rank}}</td>
+			<td class="am-hide-sm-only">{{$v.percent}}</td>
+			<td class="am-hide-sm-only">{{$v.score}}</td>
+			<td class="view-operation">
+				<a href="{{:MyUrl('admin/draw/saveinfo', ['id'=>$v['id']])}}" class="am-btn am-btn-secondary am-btn-xs am-radius am-btn-block am-icon-edit"> 编辑</a>
+				<button class="am-btn am-btn-danger am-btn-xs am-radius am-btn-block am-icon-trash-o submit-delete" data-url="{{:MyUrl('admin/draw/delete')}}" data-id="{{$v.id}}"> 删除</button>
+			</td>
+			</tr>
+			{{/foreach}}
+			{{/if}}
+			</tbody>
+		</table>
+		{{if empty($data_list)}}
+		<div class="table-no"><i class="am-icon-warning"></i> 没有相关数据</div>
+		{{/if}}
+		<!-- list end -->
+
+
+
+		<!-- page start -->
+
+		<!-- page end -->
+	</div>
+</div>
+<!-- right content end  -->
+
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->

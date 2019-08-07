@@ -8,8 +8,7 @@
 
 namespace app\service;
 use think\Db;
-use app\service\MessageService;
-use app\service\UserService;
+
 
 /**
  * 资产服务层
@@ -20,5 +19,9 @@ use app\service\UserService;
  */
 class AssetsService
 {
-
+    public static function Index($userid){
+        $where = array('userid' => $userid);
+        $data=Db::name('UserAmount')->where($where)->find();
+        return $data;
+    }
 }

@@ -1,0 +1,39 @@
+{{include file="public/header" /}}
+
+<!-- right content start  -->
+<div class="content-right">
+    <div class="content">
+        <!-- form start -->
+        <form class="am-form form-validation view-save" action="{{:MyUrl('admin/draw/save')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('admin/draw/index')}}" enctype="multipart/form-data">
+
+
+            
+            <div class="am-form-group">
+                <label>奖品名称</label>
+                <input type="text" name="name" placeholder="奖品名称" maxlength="30" data-validation-message="奖品名称最多 30 个字符" class="am-radius" value="{{if !empty($data['name'])}}{{$data.name}}{{/if}}" />
+            </div>
+            <div class="am-form-group">
+                <label>奖品顺序</label>
+                <input type="text" name="rank" placeholder="奖品顺序如(1,2,3,4)" data-validation-message="奖品顺序不能为空" class="am-radius" value="{{if !empty($data['rank'])}}{{$data.rank}}{{/if}}" />
+            </div>
+            <div class="am-form-group">
+                <label>奖品概率</label>
+                <input type="text" name="percent" placeholder="奖品的中将概率(50代表中奖概率百分值50)" maxlength="60" data-validation-message="标题格式最多 60 个字符" class="am-radius" value="{{if !empty($data['percent'])}}{{$data.percent}}{{/if}}" />
+            </div>
+            <div class="am-form-group">
+                <label>奖品积分</label>
+                <input type="text" name="score" placeholder="奖品的中将积分" maxlength="60" data-validation-message="标题格式最多 60 个字符" class="am-radius" value="{{if !empty($data['score'])}}{{$data.score}}{{/if}}" />
+            </div>
+            <div class="am-form-group am-form-group-refreshing">
+                <input type="hidden" name="id" {{if !empty($data['id'])}} value="{{$data.id}}"{{/if}} />
+                <button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'处理中...'}">保存</button>
+            </div>
+        </form>
+        <!-- form end -->
+    </div>
+</div>
+<!-- right content end  -->
+        
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->

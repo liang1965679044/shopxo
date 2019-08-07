@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,user-scalable=no">
@@ -37,154 +34,175 @@
         </style>
     <![endif]-->
 </head>
+{{include file="public/header" /}}
 
-<body>
-    <div class="lottery">
-        <canvas id="myCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
-            当前浏览器版本过低，请使用其他浏览器尝试
-        </canvas>
-        <p id="message"></p>
-        <img src="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/draw/images/start.png" id="start">
-    </div>
+<!-- header top nav -->
+{{include file="public/header_top_nav" /}}
 
-    <script>
-        var wheelSurf
-        // 请求数据
-        $.ajax({
-            url:"index.php?s=/index/userdraw/datalist",
-            type:'GET',
-            dataType:"json",
-            timeout:10000,
-            async: false,
-            success:function(result)
-            {
-                initData=result
-                //console.log(initData['list'])
-            },
-            error:function(xhr, type)
-            {
-                alert('网络错误,获取奖品失败');
-            }
-        });
+<!-- search -->
+{{include file="public/nav_search" /}}
 
-        // 计算分配获奖概率(前提所有奖品概率相加100%)
-        function getGift(){
-           /* var percent = Math.random()*100
-            var totalPercent = 0
-            for(var i = 0 ,l = initData.list.length;i<l;i++){
-                totalPercent += initData.list[i].percent
-                if(percent<=totalPercent){
-                    return initData.list[i]
-                }
-            }*/
-            $.ajax({
-                url:"index.php?s=/index/userdraw/start_draw",
-                type:'POST',
-                dataType:"json",
-                timeout:10000,
-                async: false,
-                data:initData,
-                success:function(result)
-                {
-                    yes=result
-                    //console.log(result)
-                },
-                error:function(xhr, type)
-                {
-                    alert('网络错误,获取奖品失败');
-                }
-            });
-            return yes
+<!-- header nav -->
+{{include file="public/header_nav" /}}
 
-        }
+<!-- goods category -->
+{{include file="public/goods_category" /}}
+<div class="am-container user-main">
+    <!-- user menu start -->
+    {{include file="public/user_menu" /}}
+    <!-- user menu end -->
+    <!-- content start -->
+    <div class="user-content">
+        <div class="user-content-body">
+            <div class="lottery">
+                <canvas id="myCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
+                    当前浏览器版本过低，请使用其他浏览器尝试
+                </canvas>
+                <p id="message"></p>
+                <img src="{{$Think.__MY_ROOT_PUBLIC__}}static/common/lib/draw/images/start.png" id="start">
+            </div>
 
-        var list = {}
-        
-        var angel = 360 / initData.list.length
-        // 格式化成插件需要的奖品列表格式
-        for (var i = 0, l = initData.list.length; i < l; i++) {
-            list[initData.list[i].rank] = {
-                id:initData.list[i].id,
-                name: initData.list[i].name,
-                image: initData.list[i].image
-            }
-        }
-        // 查看奖品列表格式
-        
-        // 定义转盘奖品
-        wheelSurf = $('#myCanvas').WheelSurf({
-            list: list, // 奖品 列表，(必填)
-            outerCircle: {
-                color: '#df1e15' // 外圈颜色(可选)
-            },
-            innerCircle: {
-                color: '#f4ad26' // 里圈颜色(可选)
-            },
-            dots: ['#fbf0a9', '#fbb936'], // 装饰点颜色(可选)
-            disk: ['#ffb933', '#ffe8b5', '#ffb933', '#ffd57c', '#ffb933', '#ffe8b5', '#ffd57c'], //中心奖盘的颜色，默认7彩(可选)
-            title: {
-                color: '#5c1e08',
-                font: '19px Arial'
-            } // 奖品标题样式(可选)
-        })
-
-        // 初始化转盘
-        wheelSurf.init()
-        // 抽奖
-        var throttle = true;
-        $("#start").on('click', function () {
-            var winData = getGift() // 后台接口返回中奖奖品
-            //console.log(winData)
-            if(!throttle){
-                return false;
-            }
-            throttle = false;
-            var count = 0
-            // 计算奖品角度
-
-            for (const key in list) {
-                if (list.hasOwnProperty(key)) {                    
-                    if (winData.id == list[key].id) {
-                        break;
+            <script>
+                var wheelSurf
+                // 请求数据
+                $.ajax({
+                    url:"index.php?s=/index/userdraw/datalist",
+                    type:'GET',
+                    dataType:"json",
+                    timeout:10000,
+                    async: false,
+                    success:function(result)
+                    {
+                        initData=result
+                        //console.log(initData['list'])
+                    },
+                    error:function(xhr, type)
+                    {
+                        alert('网络错误,获取奖品失败');
                     }
-                    count++    
-                }
-            }
-      
-            // 转盘抽奖，
-            wheelSurf.lottery((count * angel + angel / 2), function () {
-                //$("#message").html(winData.name)
-                alert('恭喜你获得'+winData.name)
-                //console.log(winData.score)
-                //调用方法增加积分
-                sendPrize(winData);
-                throttle = true;
-            })
-        })
-        function sendPrize(winData){
-            //console.log(score)
-            $.ajax({
-                url:"index.php?s=/index/userdraw/sendPrize",
-                type:'POST',
-                dataType:"json",
-                timeout:10000,
-                async: false,
-                data:winData,
-                success:function(result)
-                {
-                    //alert(result);
-                    //yes=result
-                    //console.log(result)
-                },
-                error:function(xhr, type)
-                {
-                    alert('网络错误');
-                }
-            });
-        }
+                });
 
-        
-    </script>
-</body>
+                // 计算分配获奖概率(前提所有奖品概率相加100%)
+                function getGift(){
+                   /* var percent = Math.random()*100
+                    var totalPercent = 0
+                    for(var i = 0 ,l = initData.list.length;i<l;i++){
+                        totalPercent += initData.list[i].percent
+                        if(percent<=totalPercent){
+                            return initData.list[i]
+                        }
+                    }*/
+                    $.ajax({
+                        url:"index.php?s=/index/userdraw/start_draw",
+                        type:'POST',
+                        dataType:"json",
+                        timeout:10000,
+                        async: false,
+                        data:initData,
+                        success:function(result)
+                        {
+                            yes=result
+                            //console.log(result)
+                        },
+                        error:function(xhr, type)
+                        {
+                            alert('网络错误,获取奖品失败');
+                        }
+                    });
+                    return yes
 
-</html>
+                }
+
+                var list = {}
+
+                var angel = 360 / initData.list.length
+                // 格式化成插件需要的奖品列表格式
+                for (var i = 0, l = initData.list.length; i < l; i++) {
+                    list[initData.list[i].rank] = {
+                        id:initData.list[i].id,
+                        name: initData.list[i].name,
+                        image: initData.list[i].image
+                    }
+                }
+                // 查看奖品列表格式
+
+                // 定义转盘奖品
+                wheelSurf = $('#myCanvas').WheelSurf({
+                    list: list, // 奖品 列表，(必填)
+                    outerCircle: {
+                        color: '#df1e15' // 外圈颜色(可选)
+                    },
+                    innerCircle: {
+                        color: '#f4ad26' // 里圈颜色(可选)
+                    },
+                    dots: ['#fbf0a9', '#fbb936'], // 装饰点颜色(可选)
+                    disk: ['#ffb933', '#ffe8b5', '#ffb933', '#ffd57c', '#ffb933', '#ffe8b5', '#ffd57c'], //中心奖盘的颜色，默认7彩(可选)
+                    title: {
+                        color: '#5c1e08',
+                        font: '19px Arial'
+                    } // 奖品标题样式(可选)
+                })
+
+                // 初始化转盘
+                wheelSurf.init()
+                // 抽奖
+                var throttle = true;
+                $("#start").on('click', function () {
+                    var winData = getGift() // 后台接口返回中奖奖品
+                    //console.log(winData)
+                    if(!throttle){
+                        return false;
+                    }
+                    throttle = false;
+                    var count = 0
+                    // 计算奖品角度
+
+                    for (const key in list) {
+                        if (list.hasOwnProperty(key)) {
+                            if (winData.id == list[key].id) {
+                                break;
+                            }
+                            count++
+                        }
+                    }
+
+                    // 转盘抽奖，
+                    wheelSurf.lottery((count * angel + angel / 2), function () {
+                        //$("#message").html(winData.name)
+                        alert('恭喜你获得'+winData.name)
+                        //console.log(winData.score)
+                        //调用方法增加积分
+                        sendPrize(winData);
+                        throttle = true;
+                    })
+                })
+                function sendPrize(winData){
+                    //console.log(score)
+                    $.ajax({
+                        url:"index.php?s=/index/userdraw/sendPrize",
+                        type:'POST',
+                        dataType:"json",
+                        timeout:10000,
+                        async: false,
+                        data:winData,
+                        success:function(result)
+                        {
+                            //alert(result);
+                            //yes=result
+                            //console.log(result)
+                        },
+                        error:function(xhr, type)
+                        {
+                            alert('网络错误');
+                        }
+                    });
+                }
+
+
+            </script>
+        </div>
+    </div>
+</div>
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->

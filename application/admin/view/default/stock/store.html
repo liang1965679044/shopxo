@@ -1,0 +1,30 @@
+{{include file="public/header" /}}
+
+<!-- right content start  -->
+<div class="content-right">
+    <div class="content">
+        <!-- form start -->
+        <form class="am-form form-validation view-save" action="{{:MyUrl('admin/stock/save')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('admin/stock/store')}}">
+
+            <div class="am-form-group">
+                <label><span class="am-form-group-label-tips">原始股名称</span></label>
+                <input type="text" name="zname" placeholder="原始股名称" data-validation-message="名称错误" class="am-radius"  />
+            </div>
+            <div class="am-form-group">
+                <label><span class="am-form-group-label-tips">原始股数量</span></label>
+                <input type="text" name="value" placeholder="原始股数量" data-validation-message="只能为正整数" class="am-radius"  />
+            </div>
+
+
+            <div class="am-form-group am-form-group-refreshing">
+                <button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'处理中...'}">保存</button>
+            </div>
+        </form>
+        <!-- form end -->
+    </div>
+</div>
+<!-- right content end  -->
+        
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->

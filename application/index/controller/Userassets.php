@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace app\index\controller;
 
+use think\Db;
 use app\service\AssetsService;
 
 /**
@@ -47,44 +48,8 @@ class UserAssets extends Common
      */
     public function Index()
     {
-       /* // 参数
-        $params = input();
-        $params['user'] = $this->user;
-
-        // 分页
-        $number = 10;
-
-        // 条件
-        $where = AssetsService::UserIntegralLogListWhere($params);
-
-        // 获取总数
-        $total = AssetsService::UserIntegralLogTotal($where);
-
-        // 分页
-        $page_params = array(
-            'number'    =>  $number,
-            'total'     =>  $total,
-            'where'     =>  $params,
-            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
-            'url'       =>  MyUrl('index/userassets/index'),
-        );
-        $page = new \base\Page($page_params);
-        $this->assign('page_html', $page->GetPageHtml());
-
-        // 获取列表
-        $data_params = array(
-            'm'         => $page->GetPageStarNumber(),
-            'n'         => $number,
-            'where'     => $where,
-        );
-        $data = AssetsService::UserIntegralLogList($data_params);
-        $this->assign('data_list', $data['data']);
-
-        // 操作类型
-        $this->assign('common_integral_log_type_list', lang('common_integral_log_type_list'));
-
-        // 参数
-        $this->assign('params', $params);*/
+        $data=AssetsService::Index($this->user['id']);
+        $this->assign('data',$data);
         return $this->fetch();
     }
 
