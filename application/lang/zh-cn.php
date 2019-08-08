@@ -172,6 +172,12 @@ return array(
             0 => array('id' => 0, 'name' => '减少', 'checked' => true),
             1 => array('id' => 1, 'name' => '增加'),
         ),
+    // 用户报单币 - 流水类型
+    'common_bd_log_type_list'             =>  array(
+        0 => array('id' => 0, 'name' => '默认','checked' => true),
+        1 => array('id' => 1, 'name' => '收入'),
+        2 => array('id' => 2, 'name' => '支出'),
+    ),
 
     // 用户投诉状态
     'common_complaint_status_list'              =>  array(

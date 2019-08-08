@@ -22,40 +22,53 @@
     <!-- content start -->
     <div class="user-content">
         <div class="user-content-body">
-            <div class="am-alert am-alert-secondary" data-am-alert>
-                <div class="available">
-                    <span class="panel-value" style="font-size:40px;color:red;" >{{$data.bdamount}}</span>
-                    <em>报单币</em>
+            <section class="am-panel am-panel-default am-radius am-panel-default">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">报单币</h3>
+                </header>
+                <div class="am-panel-bd o-h">
+                    <div class="am-fl panel-left">
+                        <span class="panel-value" style="font-size:20px;color:red;">{{$data.bdamount}}</span>
+                    </div>
+                    <a href="{{:MyUrl('index/userassets/bd')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-fr">流水</a>
                 </div>
-            </div>
-            <div class="am-alert am-alert-secondary" data-am-alert>
-                <div class="available">
-                    <span class="panel-value" style="font-size:40px;color:red;" >{{$data.jjamount}}</span>
-                    <em>奖金币</em>
+            </section>
+            <section class="am-panel am-panel-default am-radius am-panel-default">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">奖金币</h3>
+                </header>
+                <div class="am-panel-bd o-h">
+                    <span class="panel-value" style="font-size:20px;color:red;" >{{$data.jjamount}}</span>
+                    <a href="{{:MyUrl('index/userassets/jj')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-fr ">流水</a>
                 </div>
-            </div>
-            <div class="am-alert am-alert-secondary" data-am-alert>
-                <div class="available">
-                    <span class="panel-value" style="font-size:40px;color:red;" >{{$data.jfbamount}}</span>
-                    <em>积分币</em>
+            </section>
+            <section class="am-panel am-panel-default am-radius am-panel-default">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">积分币</h3>
+                </header>
+                <div class="am-panel-bd o-h">
+                    <span class="panel-value" style="font-size:20px;color:red;" >{{$data.jfbamount}}</span>
+                    <a href="{{:MyUrl('index/userassets/jfb')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-fr ">流水</a>
                 </div>
-            </div>
-            <div class="am-alert am-alert-secondary" data-am-alert>
-                <div class="available">
-                    <span class="panel-value" style="font-size:40px;color:red;" >{{$data.jfamount}}</span>
-                    <em>积分</em>
+            </section>
+            <section class="am-panel am-panel-default am-radius am-panel-default">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">积分</h3>
+                </header>
+                <div class="am-panel-bd o-h">
+                    <span class="panel-value" style="font-size:20px;color:red;" >{{$data.jfamount}}</span>
+                    <a href="{{:MyUrl('index/userassets/jf')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-fr ">流水</a>
                 </div>
-            </div>
-            <div class="am-alert am-alert-secondary" data-am-alert>
-                <div class="available">
-                    <span class="panel-value" style="font-size:40px;color:red;" >{{$data.guquanamount}}</span>
-                    <em>股权</em>
+            </section>
+            <section class="am-panel am-panel-default am-radius am-panel-default">
+                <header class="am-panel-hd">
+                    <h3 class="am-panel-title">股权</h3>
+                </header>
+                <div class="am-panel-bd o-h">
+                    <span class="panel-value" style="font-size:20px;color:red;" >{{$data.guquanamount}}</span>
+                    <a href="{{:MyUrl('index/userassets/gq')}}" class="am-btn am-btn-secondary am-radius am-btn-xs am-fr ">流水</a>
                 </div>
-            </div>
-
-
-
-            <!-- 分页 -->
+            </section>
 
         </div>
     </div>

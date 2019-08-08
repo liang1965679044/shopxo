@@ -53,5 +53,230 @@ class UserAssets extends Common
         return $this->fetch();
     }
 
+    /**用户资产详细
+     * @return array|\PDOStatement|string|\think\Model|null
+     */
+    public function amount()
+    {
+        $data=AssetsService::Index($this->user['id']);
+        return $data;
+    }
+
+    /**报单币
+     * @return mixed
+     */
+    public function bd(){
+        // 参数
+        $params = input();
+        $params['user'] = $this->user;
+        // 分页
+        $number = 10;
+        // 条件
+        $where = AssetsService::UserAssetsLogListWhere($params);
+
+        // 获取总数
+        $total = AssetsService::UserAssetsLogTotal($where,'FlowBdAmount');
+        // 分页
+        $page_params = array(
+            'number'    =>  $number,
+            'total'     =>  $total,
+            'where'     =>  $params,
+            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
+            'url'       =>  MyUrl('index/userassets/bd'),
+        );
+        $page = new \base\Page($page_params);
+        $this->assign('page_html', $page->GetPageHtml());
+
+        // 获取列表
+        $data_params = array(
+            'm'         => $page->GetPageStarNumber(),
+            'n'         => $number,
+            'where'     => $where,
+        );
+        $data = AssetsService::UserAssetsLogList($data_params,'FlowBdAmount');
+        $this->assign('data_list', $data['data']);
+
+        // 操作类型
+        $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
+        //金额
+        $amount=$this->amount();
+        $this->assign('amount', $amount);
+        // 参数
+        $this->assign('params', $params);
+        return $this->fetch();
+    }
+    /**奖金币
+     * @return mixed
+     */
+    public function jj(){
+        // 参数
+        $params = input();
+        $params['user'] = $this->user;
+        // 分页
+        $number = 10;
+        // 条件
+        $where = AssetsService::UserAssetsLogListWhere($params);
+
+        // 获取总数
+        $total = AssetsService::UserAssetsLogTotal($where,'FlowJjAmount');
+        // 分页
+        $page_params = array(
+            'number'    =>  $number,
+            'total'     =>  $total,
+            'where'     =>  $params,
+            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
+            'url'       =>  MyUrl('index/userassets/jj'),
+        );
+        $page = new \base\Page($page_params);
+        $this->assign('page_html', $page->GetPageHtml());
+
+        // 获取列表
+        $data_params = array(
+            'm'         => $page->GetPageStarNumber(),
+            'n'         => $number,
+            'where'     => $where,
+        );
+        $data = AssetsService::UserAssetsLogList($data_params,'FlowJjAmount');
+        $this->assign('data_list', $data['data']);
+
+        // 操作类型
+        $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
+        //金额
+        $amount=$this->amount();
+        $this->assign('amount', $amount);
+        // 参数
+        $this->assign('params', $params);
+        return $this->fetch();
+    }
+    /**积分币
+     * @return mixed
+     */
+    public function jfb(){
+        // 参数
+        $params = input();
+        $params['user'] = $this->user;
+        // 分页
+        $number = 10;
+        // 条件
+        $where = AssetsService::UserAssetsLogListWhere($params);
+
+        // 获取总数
+        $total = AssetsService::UserAssetsLogTotal($where,'FlowJfbAmount');
+        // 分页
+        $page_params = array(
+            'number'    =>  $number,
+            'total'     =>  $total,
+            'where'     =>  $params,
+            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
+            'url'       =>  MyUrl('index/userassets/jfb'),
+        );
+        $page = new \base\Page($page_params);
+        $this->assign('page_html', $page->GetPageHtml());
+
+        // 获取列表
+        $data_params = array(
+            'm'         => $page->GetPageStarNumber(),
+            'n'         => $number,
+            'where'     => $where,
+        );
+        $data = AssetsService::UserAssetsLogList($data_params,'FlowJfbAmount');
+        $this->assign('data_list', $data['data']);
+
+        // 操作类型
+        $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
+        //金额
+        $amount=$this->amount();
+        $this->assign('amount', $amount);
+        // 参数
+        $this->assign('params', $params);
+        return $this->fetch();
+    }
+    /**积分
+     * @return mixed
+     */
+    public function jf(){
+        // 参数
+        $params = input();
+        $params['user'] = $this->user;
+        // 分页
+        $number = 10;
+        // 条件
+        $where = AssetsService::UserAssetsLogListWhere($params);
+
+        // 获取总数
+        $total = AssetsService::UserAssetsLogTotal($where,'FlowJfAmount');
+        // 分页
+        $page_params = array(
+            'number'    =>  $number,
+            'total'     =>  $total,
+            'where'     =>  $params,
+            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
+            'url'       =>  MyUrl('index/userassets/jf'),
+        );
+        $page = new \base\Page($page_params);
+        $this->assign('page_html', $page->GetPageHtml());
+
+        // 获取列表
+        $data_params = array(
+            'm'         => $page->GetPageStarNumber(),
+            'n'         => $number,
+            'where'     => $where,
+        );
+        $data = AssetsService::UserAssetsLogList($data_params,'FlowJfAmount');
+        $this->assign('data_list', $data['data']);
+
+        // 操作类型
+        $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
+        //金额
+        $amount=$this->amount();
+        $this->assign('amount', $amount);
+        // 参数
+        $this->assign('params', $params);
+        return $this->fetch();
+    }
+    /**股权
+     * @return mixed
+     */
+    public function gq(){
+        // 参数
+        $params = input();
+        $params['user'] = $this->user;
+        // 分页
+        $number = 10;
+        // 条件
+        $where = AssetsService::UserAssetsLogListWhere($params);
+
+        // 获取总数
+        $total = AssetsService::UserAssetsLogTotal($where,'FlowGqAmount');
+        // 分页
+        $page_params = array(
+            'number'    =>  $number,
+            'total'     =>  $total,
+            'where'     =>  $params,
+            'page'      =>  isset($params['page']) ? intval($params['page']) : 1,
+            'url'       =>  MyUrl('index/userassets/gq'),
+        );
+        $page = new \base\Page($page_params);
+        $this->assign('page_html', $page->GetPageHtml());
+
+        // 获取列表
+        $data_params = array(
+            'm'         => $page->GetPageStarNumber(),
+            'n'         => $number,
+            'where'     => $where,
+        );
+        $data = AssetsService::UserAssetsLogList($data_params,'FlowGqAmount');
+        $this->assign('data_list', $data['data']);
+
+        // 操作类型
+        $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
+        //金额
+        $amount=$this->amount();
+        $this->assign('amount', $amount);
+        // 参数
+        $this->assign('params', $params);
+        return $this->fetch();
+    }
+
 }
 ?>

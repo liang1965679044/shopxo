@@ -63,7 +63,7 @@ class UserAmountService
             $bd_amount=self::UserIntegal($user_id,'bdamount');
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'BD' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'BD' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -73,7 +73,7 @@ class UserAmountService
                 'final_amount'      =>$bd_amount+$amount,
                 'beforeamount'      =>$bd_amount,
                 'afteramount'       =>$bd_amount+$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowBdAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setInc('bdamount',$amount);
@@ -112,7 +112,7 @@ class UserAmountService
             }
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'BD' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'BD' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -122,7 +122,7 @@ class UserAmountService
                 'final_amount'      =>$bd_amount-$amount,
                 'beforeamount'      =>$bd_amount,
                 'afteramount'       =>$bd_amount-$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowBdAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('bdamount',$amount);
@@ -157,7 +157,7 @@ class UserAmountService
             $gq_amount=self::UserIntegal($user_id,'guquanamount');
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'GQ' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GQ' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -167,7 +167,7 @@ class UserAmountService
                 'final_amount'      =>$gq_amount+$amount,
                 'beforeamount'      =>$gq_amount,
                 'afteramount'       =>$gq_amount+$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowGqAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setInc('guquanamount',$amount);
@@ -205,7 +205,7 @@ class UserAmountService
             }
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'GQ' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GQ' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -215,7 +215,7 @@ class UserAmountService
                 'final_amount'      =>$gq_amount-$amount,
                 'beforeamount'      =>$gq_amount,
                 'afteramount'       =>$gq_amount-$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowGqAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('guquanamount',$amount);
@@ -250,7 +250,7 @@ class UserAmountService
             $jf_amount=self::UserIntegal($user_id,'jfamount');
             $data = array(
                 'userid'            => intval($user_id),
-                'flowid'            =>'GF' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GF' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -260,7 +260,7 @@ class UserAmountService
                 'final_amount'      =>$jf_amount+$amount,
                 'beforeamount'      =>$jf_amount,
                 'afteramount'       =>$jf_amount+$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJfAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setInc('jfamount',$amount);
@@ -298,7 +298,7 @@ class UserAmountService
             }
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'GF' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GF' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -308,7 +308,7 @@ class UserAmountService
                 'final_amount'      =>$jf_amount-$amount,
                 'beforeamount'      =>$jf_amount,
                 'afteramount'       =>$jf_amount-$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJfAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('jfamount',$amount);
@@ -343,7 +343,7 @@ class UserAmountService
             $jfb_amount=self::UserIntegal($user_id,'jfbamount');
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'GFB' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GFB' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -353,7 +353,7 @@ class UserAmountService
                 'final_amount'      =>$jfb_amount+$amount,
                 'beforeamount'      =>$jfb_amount,
                 'afteramount'       =>$jfb_amount+$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJfbAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setInc('jfbamount',$amount);
@@ -391,7 +391,7 @@ class UserAmountService
             }
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'GFB' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'GFB' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -401,7 +401,7 @@ class UserAmountService
                 'final_amount'      =>$jfb_amount-$amount,
                 'beforeamount'      =>$jfb_amount,
                 'afteramount'       =>$jfb_amount-$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJfbAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('jfbamount',$amount);
@@ -436,7 +436,7 @@ class UserAmountService
             $jj_amount=self::UserIntegal($user_id,'jjamount');
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'JJ' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'JJ' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -446,7 +446,7 @@ class UserAmountService
                 'final_amount'      =>$jj_amount+$amount,
                 'beforeamount'      =>$jj_amount,
                 'afteramount'       =>$jj_amount+$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJjAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setInc('jjamount',$amount);
@@ -484,7 +484,7 @@ class UserAmountService
             }
             $data = array(
                 'userid'           => intval($user_id),
-                'flowid'            =>'JJ' . $orderno. rand(100000, 9999999),
+                'flowid'            =>'JJ' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
                 'orderno'           =>$orderno,
@@ -494,7 +494,7 @@ class UserAmountService
                 'final_amount'      =>$jj_amount-$amount,
                 'beforeamount'      =>$jj_amount,
                 'afteramount'       =>$jj_amount-$amount,
-                'flowtime'          =>date("Y-m-d H:i:s"),
+                'flowtime'          =>time(),
             );
             if(Db::name('FlowJjAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('jjamount',$amount);

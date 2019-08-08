@@ -61,7 +61,7 @@ class UserBd extends Common
     public function StartBd()
     {
 
-        $res=UserLevelService::Userexchange(99,$this->user['id']);
+        $res=UserAmountService::UserBdAmountAdd(1,1000,date('YmdHis').GetNumberCode(6));
         dump($res);
        /* if(input())
         {

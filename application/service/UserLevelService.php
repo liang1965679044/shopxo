@@ -116,9 +116,9 @@ class UserLevelService
             return DataReturn('积分不足，兑换失败');
         }
 
-        UserAmountService::UserJfAmountRec($userid,$score,'88888');
-        UserAmountService::UserJjAmountAdd($userid,$score*0.7,'33242');
-        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,'882342342888');
+        UserAmountService::UserJfAmountRec($userid,$score,date('YmdHis').GetNumberCode(6));
+        UserAmountService::UserJjAmountAdd($userid,$score*0.7,date('YmdHis').GetNumberCode(6));
+        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,date('YmdHis').GetNumberCode(6));
         return DataReturn('兑换成功', 0);
     }
 }
