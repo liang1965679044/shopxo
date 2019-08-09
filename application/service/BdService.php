@@ -9,6 +9,8 @@
 namespace app\service;
 
 use think\Db;
+use app\service\UserService;
+use app\service\UserAmountService;
 class BdService
 {
     /**
@@ -28,12 +30,18 @@ class BdService
     public static function BdGoodsStart($params = [])
     {
         $amount=BdService::BdAmount($params['user']['id']);
-        if(!$amount){
-            return DataReturn('报单币余额不足,请充值', 0);
+        if($amount['bdamount']<0 || $amount['bdamount']<$params['goods_price']){
+            return DataReturn('报单币余额不足,请充值', -1);
         }
-        if(empty($params['user']['address'])){
-            return DataReturn('用户地址不能为空,报单失败', 0);
+        $address=UserService::UserAddressList($params);
+        if(empty($address['data'])){
+            return DataReturn('用户地址不能为空,报单失败', -1);
         }
+        $res=UserAmountService::UserBdAmountRec($params['user']['id'],$params['goods_price'],StrOrderOne());
+        if($res){
+            return DataReturn('报单成功', 0);
+        }
+        return DataReturn('系统异常,报单失败', -1);
     }
 
     /**报单币余额

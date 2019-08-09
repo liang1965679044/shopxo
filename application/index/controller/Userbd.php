@@ -61,16 +61,11 @@ class UserBd extends Common
     public function StartBd()
     {
 
-        $res=UserAmountService::UserBdAmountAdd(1,1000,date('YmdHis').GetNumberCode(6));
+       /*$res=UserAmountService::UserBdAmountAdd(1,2000,date('YmdHis').GetNumberCode(6));
         dump($res);
-       /* if(input())
-        {
-            $params = input();
-            $params['user'] = $this->user;
-            $res=BdService::BdGoodsStart($params);
-        }else{
-            return DataReturn('数据提交非法', 0);
-        }
-        return $this->error($res['msg']);*/
+        exit;*/
+        $params = input();
+        $params['user'] = $this->user;
+        return BdService::BdGoodsStart($params);
     }
 }

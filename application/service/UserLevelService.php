@@ -97,28 +97,58 @@ class UserLevelService
             Db::name('User')->where(['id'=>$id])->update($data);
         }
     }
-    public static function UserScore($userid)
-    {
-        $jf= Db::name('UserAmount')->where(['userid'=>$userid])->value('jfamount');
-        return $jf;
-    }
+
+    /**积分兑换现金
+     * @param $score
+     * @param $userid
+     * @return array
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public static function Userexchange($score,$userid)
     {
+
         if(!is_numeric($score)){
-            return DataReturn('输入积分有误');
+            return DataReturn('输入积分有误',-1);
         }
-
         if (!is_int($score + 0) || ($score + 0) < 0) {
-            return DataReturn('输入积分只能是正整数');
+            return DataReturn('输入积分只能是正整数',-1);
         }
-        $jf=self::UserScore($userid);
-        if(empty($jf) || $score>$jf){
-            return DataReturn('积分不足，兑换失败');
+        $jf=UserAmountService::UserInfo($userid);
+        if(empty($jf['jfamount']) || $score>$jf['jfamount']){
+            return DataReturn('积分不足，兑换失败',-1);
         }
 
-        UserAmountService::UserJfAmountRec($userid,$score,date('YmdHis').GetNumberCode(6));
-        UserAmountService::UserJjAmountAdd($userid,$score*0.7,date('YmdHis').GetNumberCode(6));
-        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,date('YmdHis').GetNumberCode(6));
+        UserAmountService::UserJfAmountRec($userid,$score,StrOrderOne());
+        UserAmountService::UserJjAmountAdd($userid,$score*0.7,StrOrderOne());
+        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,StrOrderOne());
+        return DataReturn('兑换成功', 0);
+    }
+
+    /**股权兑换原始股
+     * @param $gq
+     * @param $userid
+     * @return array
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public static function Gqchange($gq,$userid){
+        if(!is_numeric($gq)){
+            return DataReturn('输入股权有误',-1);
+        }
+        if (!is_int($gq + 0) || ($gq + 0) < 0) {
+            return DataReturn('输入股权只能是正整数',-1);
+        }
+        $jf=UserAmountService::UserInfo($userid);
+        if(empty($jf['guquanamount']) || $gq>$jf['guquanamount']){
+            return DataReturn('股权不足，兑换失败',-1);
+        }
+
+        UserAmountService::UserGqAmountRec($userid,$gq,StrOrderOne());
         return DataReturn('兑换成功', 0);
     }
 }

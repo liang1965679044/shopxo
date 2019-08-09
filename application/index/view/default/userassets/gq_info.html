@@ -23,19 +23,13 @@
     <div class="user-content">
         <div class="user-content-body">
             <!-- form start -->
-            <form class="am-form form-validation view-save" action="{{:MyUrl('index/userbd/StartBd')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('index/userassets/index')}}">
+            <form class="am-form form-validation view-save" action="{{:MyUrl('index/userassets/gq_change')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('index/userassets/index')}}">
                 <legend>
-                    <span class="legend-title">我要报单</span>
-                    <a href="{{:MyUrl('index/userbd/index')}}" class="am-fr am-icon-mail-reply"> 返回</a>
+                    <span class="legend-title">股权兑换原始股</span>
+                    <a href="{{:MyUrl('index/userassets/index')}}" class="am-fr am-icon-mail-reply"> 返回</a>
                 </legend>
                 <div class="am-form-group">
-                    <select name="goods_price" class="chosen-select" data-placeholder="报单金额...">
-                        {{if !empty($data_list)}}
-                        {{foreach $data_list as $v}}
-                        <option value="{{$v.goods_price}}">{{$v.goods_name}}</option>
-                        {{/foreach}}
-                        {{/if}}
-                    </select>
+                    <input type="text" name="money" placeholder="股权数量"  class="am-radius" required />
                 </div>
                 <div class="am-form-group am-form-group-refreshing">
                     <button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'处理中...'}">提交</button>

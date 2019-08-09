@@ -12,6 +12,7 @@ namespace app\index\controller;
 
 use think\Db;
 use app\service\AssetsService;
+use app\service\UserLevelService;
 
 /**
  * 用户资产管理
@@ -276,6 +277,50 @@ class UserAssets extends Common
         // 参数
         $this->assign('params', $params);
         return $this->fetch();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function bd_info(){
+        return $this->fetch();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jj_info(){
+        return $this->fetch();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jf_info(){
+        return $this->fetch();
+    }
+
+    /**
+     *
+     */
+    public function jf_change(){
+
+        $params = input();
+        return UserLevelService::Userexchange($params['money'],$this->user['id']);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function gq_info(){
+        return $this->fetch();
+    }
+    /**
+     * @return mixed
+     */
+    public function gq_change(){
+        $params = input();
+        return UserLevelService::Userexchange($params['money'],$this->user['id']);
     }
 
 }

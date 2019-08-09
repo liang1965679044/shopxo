@@ -1135,6 +1135,20 @@ function GetNumberCode($length = 6)
     for($i=0; $i<intval($length); $i++) $code .= rand(0, 9);
     return $code;
 }
+/**
+ * [build_order_no 生成唯一订单号]
+ * @author 邱先生
+ * @copyright 烟火里的尘埃
+ * @version [V1.0版本]
+ * @date 2016-07-13
+ * @return [type] [description]
+ */
+function StrOrderOne(){
+    /* 选择一个随机的方案 */
+    mt_srand((double) microtime() * 1000000);
+
+    return date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+}
 
 /**
  * [LoginPwdEncryption 登录密码加密]

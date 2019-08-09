@@ -18,7 +18,7 @@ use think\Db;
  */
 class UserAmountService
 {
-    /**
+    /**用户资产
      * @param $user_id  [用户id]
      * @return array|\PDOStatement|string|\think\Model|null
      * @throws \think\db\exception\DataNotFoundException
