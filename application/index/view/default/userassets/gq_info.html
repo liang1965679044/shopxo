@@ -25,9 +25,10 @@
             <!-- form start -->
             <form class="am-form form-validation view-save" action="{{:MyUrl('index/userassets/gq_change')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('index/userassets/index')}}">
                 <legend>
-                    <span class="legend-title">股权兑换原始股</span>
+                    <span class="legend-title">原始股发行量:<span style="font-size:30px;color: red;">{{$data}}</span></span>
                     <a href="{{:MyUrl('index/userassets/index')}}" class="am-fr am-icon-mail-reply"> 返回</a>
                 </legend>
+
                 <div class="am-form-group">
                     <input type="text" name="money" placeholder="股权数量"  class="am-radius" required />
                 </div>

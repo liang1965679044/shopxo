@@ -8,11 +8,11 @@
 
             <div class="am-form-group">
                 <label><span class="am-form-group-label-tips">原始股名称</span></label>
-                <input type="text" name="zname" placeholder="原始股名称" data-validation-message="名称错误" class="am-radius"  />
+                <input type="text" name="zname" placeholder="原始股名称" data-validation-message="名称错误" class="am-radius" {{if !empty($data)}} value="{{$data.zname}}"{{/if}} />
             </div>
             <div class="am-form-group">
                 <label><span class="am-form-group-label-tips">原始股数量</span></label>
-                <input type="text" name="value" placeholder="原始股数量" data-validation-message="只能为正整数" class="am-radius"  />
+                <input type="text" name="value" placeholder="原始股数量" data-validation-message="只能为正整数" class="am-radius" {{if !empty($data)}} value="{{$data.value}}"{{/if}} />
             </div>
 
 

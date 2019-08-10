@@ -60,10 +60,6 @@ class UserBd extends Common
      */
     public function StartBd()
     {
-
-       /*$res=UserAmountService::UserBdAmountAdd(1,2000,date('YmdHis').GetNumberCode(6));
-        dump($res);
-        exit;*/
         $params = input();
         $params['user'] = $this->user;
         return BdService::BdGoodsStart($params);

@@ -16,11 +16,7 @@
             </div>
             <div class="am-form-group">
                 <label>原始股</label>
-                <select name="id" class="am-radius chosen-select c-p" data-validation-message="请选择原始股" required>
-                    {{foreach $list as $v1}}
-                    <option value="{{$v1.id}}">{{$v1.zname}}&nbsp剩余数量:{{$v1.value}}</option>
-                    {{/foreach}}
-                </select>
+                <input type="text"  placeholder="{{$list.zname}}数量:{{$list.value}}"  class="am-radius" disabled />
             </div>
             <div class="am-form-group">
                 <label><span class="am-form-group-label-tips">要分配的原始股数量</span></label>

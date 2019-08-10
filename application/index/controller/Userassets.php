@@ -9,11 +9,9 @@
 // | Author: Devil
 // +----------------------------------------------------------------------
 namespace app\index\controller;
-
 use think\Db;
 use app\service\AssetsService;
 use app\service\UserLevelService;
-
 /**
  * 用户资产管理
  * @author   Devil
@@ -34,11 +32,9 @@ class UserAssets extends Common
     {
         // 调用父类前置方法
         parent::_initialize();
-
         // 是否登录
         $this->IsLogin();
     }
-
     /**
      * 用户资产列表
      * @author   Devil
@@ -53,7 +49,6 @@ class UserAssets extends Common
         $this->assign('data',$data);
         return $this->fetch();
     }
-
     /**用户资产详细
      * @return array|\PDOStatement|string|\think\Model|null
      */
@@ -62,7 +57,6 @@ class UserAssets extends Common
         $data=AssetsService::Index($this->user['id']);
         return $data;
     }
-
     /**报单币
      * @return mixed
      */
@@ -74,7 +68,6 @@ class UserAssets extends Common
         $number = 10;
         // 条件
         $where = AssetsService::UserAssetsLogListWhere($params);
-
         // 获取总数
         $total = AssetsService::UserAssetsLogTotal($where,'FlowBdAmount');
         // 分页
@@ -87,7 +80,6 @@ class UserAssets extends Common
         );
         $page = new \base\Page($page_params);
         $this->assign('page_html', $page->GetPageHtml());
-
         // 获取列表
         $data_params = array(
             'm'         => $page->GetPageStarNumber(),
@@ -96,7 +88,6 @@ class UserAssets extends Common
         );
         $data = AssetsService::UserAssetsLogList($data_params,'FlowBdAmount');
         $this->assign('data_list', $data['data']);
-
         // 操作类型
         $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
         //金额
@@ -117,7 +108,6 @@ class UserAssets extends Common
         $number = 10;
         // 条件
         $where = AssetsService::UserAssetsLogListWhere($params);
-
         // 获取总数
         $total = AssetsService::UserAssetsLogTotal($where,'FlowJjAmount');
         // 分页
@@ -130,7 +120,6 @@ class UserAssets extends Common
         );
         $page = new \base\Page($page_params);
         $this->assign('page_html', $page->GetPageHtml());
-
         // 获取列表
         $data_params = array(
             'm'         => $page->GetPageStarNumber(),
@@ -139,7 +128,6 @@ class UserAssets extends Common
         );
         $data = AssetsService::UserAssetsLogList($data_params,'FlowJjAmount');
         $this->assign('data_list', $data['data']);
-
         // 操作类型
         $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
         //金额
@@ -160,7 +148,6 @@ class UserAssets extends Common
         $number = 10;
         // 条件
         $where = AssetsService::UserAssetsLogListWhere($params);
-
         // 获取总数
         $total = AssetsService::UserAssetsLogTotal($where,'FlowJfbAmount');
         // 分页
@@ -173,7 +160,6 @@ class UserAssets extends Common
         );
         $page = new \base\Page($page_params);
         $this->assign('page_html', $page->GetPageHtml());
-
         // 获取列表
         $data_params = array(
             'm'         => $page->GetPageStarNumber(),
@@ -182,7 +168,6 @@ class UserAssets extends Common
         );
         $data = AssetsService::UserAssetsLogList($data_params,'FlowJfbAmount');
         $this->assign('data_list', $data['data']);
-
         // 操作类型
         $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
         //金额
@@ -203,7 +188,6 @@ class UserAssets extends Common
         $number = 10;
         // 条件
         $where = AssetsService::UserAssetsLogListWhere($params);
-
         // 获取总数
         $total = AssetsService::UserAssetsLogTotal($where,'FlowJfAmount');
         // 分页
@@ -216,7 +200,6 @@ class UserAssets extends Common
         );
         $page = new \base\Page($page_params);
         $this->assign('page_html', $page->GetPageHtml());
-
         // 获取列表
         $data_params = array(
             'm'         => $page->GetPageStarNumber(),
@@ -225,7 +208,6 @@ class UserAssets extends Common
         );
         $data = AssetsService::UserAssetsLogList($data_params,'FlowJfAmount');
         $this->assign('data_list', $data['data']);
-
         // 操作类型
         $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
         //金额
@@ -246,7 +228,6 @@ class UserAssets extends Common
         $number = 10;
         // 条件
         $where = AssetsService::UserAssetsLogListWhere($params);
-
         // 获取总数
         $total = AssetsService::UserAssetsLogTotal($where,'FlowGqAmount');
         // 分页
@@ -259,7 +240,6 @@ class UserAssets extends Common
         );
         $page = new \base\Page($page_params);
         $this->assign('page_html', $page->GetPageHtml());
-
         // 获取列表
         $data_params = array(
             'm'         => $page->GetPageStarNumber(),
@@ -268,7 +248,6 @@ class UserAssets extends Common
         );
         $data = AssetsService::UserAssetsLogList($data_params,'FlowGqAmount');
         $this->assign('data_list', $data['data']);
-
         // 操作类型
         $this->assign('common_bd_log_type_list', lang('common_bd_log_type_list'));
         //金额
@@ -278,37 +257,31 @@ class UserAssets extends Common
         $this->assign('params', $params);
         return $this->fetch();
     }
-
     /**
      * @return mixed
      */
     public function bd_info(){
         return $this->fetch();
     }
-
     /**
      * @return mixed
      */
     public function jj_info(){
         return $this->fetch();
     }
-
     /**
      * @return mixed
      */
     public function jf_info(){
         return $this->fetch();
     }
-
     /**
      *
      */
     public function jf_change(){
-
         $params = input();
         return UserLevelService::Userexchange($params['money'],$this->user['id']);
     }
-
     /**
      * @return mixed
      */
@@ -322,6 +295,5 @@ class UserAssets extends Common
         $params = input();
         return UserLevelService::Userexchange($params['money'],$this->user['id']);
     }
-
 }
 ?>

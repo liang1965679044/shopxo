@@ -107,7 +107,7 @@ class UserLevelService
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public static function Userexchange($score,$userid)
+    public static function Userechange($score,$userid)
     {
 
         if(!is_numeric($score)){
@@ -123,8 +123,11 @@ class UserLevelService
 
         UserAmountService::UserJfAmountRec($userid,$score,StrOrderOne());
         UserAmountService::UserJjAmountAdd($userid,$score*0.7,StrOrderOne());
-        UserAmountService::UserJfbAmountAdd($userid,$score*0.3,StrOrderOne());
-        return DataReturn('兑换成功', 0);
+        $res=UserAmountService::UserJfbAmountAdd($userid,$score*0.3,StrOrderOne());
+        if($res){
+            return DataReturn('兑换成功', 0);
+        }
+        return DataReturn('系统异常,兑换失败', 0);
     }
 
     /**股权兑换原始股
@@ -148,7 +151,38 @@ class UserLevelService
             return DataReturn('股权不足，兑换失败',-1);
         }
 
-        UserAmountService::UserGqAmountRec($userid,$gq,StrOrderOne());
-        return DataReturn('兑换成功', 0);
+        $res=UserAmountService::UserGqAmountRec($userid,$gq,StrOrderOne());
+        if($res){
+            return DataReturn('兑换成功', 0);
+        }
+        return DataReturn('系统异常,兑换失败', -1);
+    }
+
+    /**奖金币提现
+     * @param $gq
+     * @param $userid
+     * @return array
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public static function Jjchange($jj,$userid){
+        if(!is_numeric($jj)){
+            return DataReturn('输入股权有误',-1);
+        }
+        if (!is_int($jj + 0) || ($jj + 0) < 0) {
+            return DataReturn('输入股权只能是正整数',-1);
+        }
+        $jf=UserAmountService::UserInfo($userid);
+        if(empty($jf['jjamount']) || $jj>$jf['jjamount']){
+            return DataReturn('奖金币不足,提现失败',-1);
+        }
+
+        $res=UserAmountService::UserJjAmountRec($userid,$jj,StrOrderOne(),21);
+        if($res){
+            return DataReturn('提现成功', 0);
+        }
+        return DataReturn('系统异常,提现失败',-1);
     }
 }

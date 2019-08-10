@@ -22,20 +22,20 @@
     <!-- content start -->
     <div class="user-content">
         <div class="user-content-body">
-
-
-            <form class="am-form form-validation form-search" method="post" action="{{:MyUrl('index/userassets/jj_info')}}" request-type="form">
-                <div class="thin">
-                    <div class="am-input-group am-input-group-sm am-fl so">
-                        <input type="text" autocomplete="off" name="money" class="am-radius" placeholder="提现金额" />
-                        <span class="am-input-group-btn">
-                            <button class="am-btn am-btn-default am-radius" type="submit" data-am-loading="{spinner:'circle-o-notch', loadingText:'提现中...'}">提现</button>
-                        </span>
-                    </div>
-
+            <!-- form start -->
+            <form class="am-form form-validation view-save" action="{{:MyUrl('index/userassets/jj_change')}}" method="POST" request-type="ajax-url" request-value="{{:MyUrl('index/userassets/index')}}">
+                <legend>
+                    <span class="legend-title">奖金提现</span>
+                    <a href="{{:MyUrl('index/userassets/index')}}" class="am-fr am-icon-mail-reply"> 返回</a>
+                </legend>
+                <div class="am-form-group">
+                    <input type="text" name="money" placeholder="奖金提现"  class="am-radius" required />
                 </div>
-
+                <div class="am-form-group am-form-group-refreshing">
+                    <button type="submit" class="am-btn am-btn-primary am-radius btn-loading-example am-btn-sm am-btn-block" data-am-loading="{loadingText:'处理中...'}">保存</button>
+                </div>
             </form>
+            <!-- form end -->
         </div>
     </div>
     <!-- content end -->

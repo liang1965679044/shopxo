@@ -704,7 +704,7 @@ php;
             {
                 return DataReturn('应用视图目录创建失败[admin]', -10);
             }
-            if(@file_put_contents($app_view_admin_dir.DS.'index.html', $admin_view) === false)
+            if(@file_put_contents($app_view_admin_dir.DS.'bd.html', $admin_view) === false)
             {
                 return DataReturn('应用视图文件创建失败[admin-view]', -11);
             }
@@ -738,7 +738,7 @@ php;
             {
                 return DataReturn('应用视图目录创建失败[index]', -10);
             }
-            if(!file_exists($app_view_index_dir.DS.'index.html') && @file_put_contents($app_view_index_dir.DS.'index.html', $index_view) === false)
+            if(!file_exists($app_view_index_dir.DS.'bd.html') && @file_put_contents($app_view_index_dir.DS.'bd.html', $index_view) === false)
             {
                 return DataReturn('应用视图文件创建失败[index-view]', -11);
             }

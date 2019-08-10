@@ -126,6 +126,8 @@ class UserAmountService
             );
             if(Db::name('FlowBdAmount')->insertGetId($data) > 0){
                 Db::name('UserAmount')->where(['userid' => $user_id])->setDec('bdamount',$amount);
+                //增加金额到公司资产表中
+                Db::name('CorporateAssets')->where(['id' => 1])->setInc('total_amount',$amount);
                 // 提交事务
                 Db::commit();
                 return true;

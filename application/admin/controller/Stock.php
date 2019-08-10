@@ -52,10 +52,10 @@ class Stock extends Common
      */
     public function Store()
     {
-        /*// 配置信息
-        $data = Db::name('SysConfig')->select();
+        // 配置信息
+        $data = Db::name('SysConfig')->find();
         // 参数
-        $this->assign('data', $data);*/
+        $this->assign('data', $data);
 
         return $this->fetch();
     }
@@ -69,7 +69,7 @@ class Stock extends Common
     public function change()
     {
         //
-        $list=Db::name('SysConfig')->select();
+        $list=Db::name('SysConfig')->find();
         // 配置信息
         $data = Db::name('User')->select();
         // 参数
@@ -94,14 +94,11 @@ class Stock extends Common
         if (!is_int($params['value'] + 0) || ($params['value'] + 0) < 0) {
             return DataReturn('输入原始股只能是正整数',-1);
         }
-        if(empty($params['id'])){
-            return DataReturn('原始股异常状态异常,分配失败',-1);
-        }
         // 开启事务
         Db::startTrans();
-        $res=Db::name('SysConfig')->where(['id' => $params['id']])->setDec('value',$params['value']);
+        $res=Db::name('SysConfig')->where(['id' => 1])->setDec('value',$params['value']);
         if($res){
-            $orderno='houtaiASSIGN' . rand(100000, 9999999);
+            $orderno=StrOrderOne();
             $yes=UserAmountService::UserGqAmountAdd($params['userid'],$params['value'],$orderno);
             if($yes){
                 Db::commit();
@@ -141,10 +138,11 @@ class Stock extends Common
             'value'              =>  $params['value'],
 
         );
-        if(Db::name('SysConfig')->insertGetId($data) > 0){
-            return  DataReturn('增加成功', 0);
+        $res=Db::name('SysConfig')->where(['id' => 1])->update($data);
+        if($res){
+            return  DataReturn('配置成功', 0);
         }
-        return  DataReturn('增加失败', -1);
+        return  DataReturn('配置失败', -1);
     }
 
 }

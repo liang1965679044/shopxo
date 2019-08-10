@@ -750,14 +750,14 @@ class NavigationService
                         'icon'      =>  'am-icon-fire',
                         'is_system' =>  1,
                     ],
-                    [
+                   /* [
                         'name'      =>  '我的积分',
                         'url'       =>  MyUrl('index/userintegral/index'),
                         'contains'  =>  ['userintegralindex'],
                         'is_show'   =>  1,
                         'icon'      =>  'am-icon-fire',
                         'is_system' =>  1,
-                    ],
+                    ],*/
                     [
                         'name'      =>  '我要报单',
                         'url'       =>  MyUrl('index/userbd/index'),

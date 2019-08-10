@@ -66,5 +66,11 @@ return [
         "flowkey" =>"减少",
         "flowname"=>"用户奖金",
     ],
+    '21'=>[
+        "flowtype"=>"21",
+        "flowcate"=>"奖金",
+        "flowkey" =>"减少",
+        "flowname"=>"提现",
+    ],
 
 ];

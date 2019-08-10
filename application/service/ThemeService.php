@@ -45,7 +45,7 @@ class ThemeService
                 $default_preview = __MY_PUBLIC_URL__.'static'.DS.'common'.DS.'images'.DS.'default-preview.jpg';
                 while(($temp_file = readdir($dh)) !== false)
                 {
-                    if(in_array($temp_file, ['.', '..', 'index.html']))
+                    if(in_array($temp_file, ['.', '..', 'bd.html']))
                     {
                         continue;
                     }
