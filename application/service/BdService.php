@@ -37,7 +37,13 @@ class BdService
         if(empty($address['data'])){
             return DataReturn('用户地址不能为空,报单失败', -1);
         }
-        $res=UserAmountService::UserBdAmountRec($params['user']['id'],$params['goods_price'],StrOrderOne());
+        //生成报单订单
+        $bd_pay=UserAmountService::bd_pay($params,$address);
+        if($bd_pay){
+            $res=UserAmountService::UserBdAmountRec($params['user']['id'],$params['goods_price'],$bd_pay['order_no']);
+        }else{
+            $res=false;
+        }
         if($res){
             return DataReturn('报单成功', 0);
         }

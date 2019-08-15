@@ -8,6 +8,7 @@
 
 namespace app\service;
 use think\Db;
+use app\service\UserService;
 
 /**
  * 充值服务层
@@ -485,7 +486,7 @@ class UserAmountService
                 return DataReturn('奖金不足', 0);
             }
             $data = array(
-                'userid'           => intval($user_id),
+                'userid'            => intval($user_id),
                 'flowid'            =>'JJ' . $orderno,
                 'usertype'          =>1,
                 'userid'            =>$user_id,
@@ -509,6 +510,39 @@ class UserAmountService
                 return false;
             }
 
+        }
+    }
+    public static function bd_pay($params){
+        // 开启事务
+        //取得用户默认地址
+        $default_address=UserService::UserDefaultAddress($params);
+        Db::startTrans();
+        $data=array(
+            'order_no'              =>StrOrderOne(),
+            'user_id'               =>$params['user']['id'],
+            'shop_id'               =>0,
+            'receive_address_id'    => $default_address['data']['id'],
+            'receive_name'          => $default_address['data']['name'],
+            'receive_tel'           => $default_address['data']['tel'],
+            'receive_province'      => $default_address['data']['province'],
+            'receive_city'          => $default_address['data']['city'],
+            'receive_county'        => $default_address['data']['county'],
+            'receive_address'       => $default_address['data']['address'],
+            'status'                =>2,//订单状态(己支付，待发货)
+            'pay_status'            =>1,//付款状态(己支付)
+            'products'              =>$params['goods_price'],//报单套餐
+            'price'                 =>$params['goods_price'],//订单单价
+            'pay_time'              =>time(),//支付时间
+            'add_time'              =>time(),//添加时间
+        );
+        if(Db::name('BdOrder')->insertGetId($data) > 0){
+            // 提交事务
+            Db::commit();
+            return $data;
+        }else{
+            // 回滚事务
+            Db::rollback();
+            return false;
         }
     }
 }
